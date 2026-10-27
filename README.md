@@ -120,7 +120,7 @@ Página única em HTML e CSS puros, sem dependências externas, com:
 1. Abra o repositório no GitHub e vá em **Settings → Pages**.
 2. Em **Build and deployment**, escolha **Deploy from a branch**.
 3. Selecione a branch `main` e a pasta `/ (root)` e clique em **Save**.
-4. Após alguns minutos, o site ficará disponível em `https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/Expedição_Príncipe_da_Beira.html`.
+4. Após alguns minutos, o site ficará disponível em `https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/Expedição_Príncipe_da_Beira.html`
 
 Como o arquivo não se chama `index.html`, o endereço do site precisa incluir o nome do arquivo. O endereço sem o nome (`https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/`) não abre a página.
 
