@@ -107,20 +107,22 @@ Página única em HTML e CSS puros, sem dependências externas, com:
 
 ```
 .
-├── index.html   # site completo (HTML + CSS)
-└── README.md    # este arquivo
+├── Expedição_Príncipe_da_Beira.html   # site completo (HTML + CSS)
+└── README.md                          # este arquivo
 ```
 
 ### Como visualizar
 
-**Localmente:** baixe o repositório e abra o arquivo `index.html` no navegador.
+**Localmente:** baixe o repositório e abra o arquivo `Expedição_Príncipe_da_Beira.html` no navegador.
 
 **Online, com o GitHub Pages:**
 
 1. Abra o repositório no GitHub e vá em **Settings → Pages**.
 2. Em **Build and deployment**, escolha **Deploy from a branch**.
 3. Selecione a branch `main` e a pasta `/ (root)` e clique em **Save**.
-4. Após alguns minutos, o site ficará disponível em `https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/`.
+4. Após alguns minutos, o site ficará disponível em `https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/Expedição_Príncipe_da_Beira.html`.
+
+Como o arquivo não se chama `index.html`, o endereço do site precisa incluir o nome do arquivo. O endereço sem o nome (`https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/`) não abre a página.
 
 ## Observação
 
