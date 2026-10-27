@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Expedição Príncipe da Beira</title>
+<meta name="description" content="Projeto de empreendedorismo: pacotes turísticos, história e renda para Costa Marques (RO) a partir do Forte Príncipe da Beira.">
+<style>
+:root{
+  --terra:#2a1c15; --terra2:#3b2a21; --pedra:#f2eadb; --tijolo:#a44a2a;
+  --mata:#2e6b4f; --mata2:#245540; --ocre:#dba26b; --texto:#2a1c15; --suave:#6a5748;
+  --serif:Georgia,"Times New Roman",serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:4.5rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font:1.0625rem/1.6 var(--sans);color:var(--texto);background:var(--pedra)}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:400;line-height:1.15}
+h2{font-size:clamp(1.9rem,4vw,2.7rem);margin-bottom:1.25rem}
+h3{font-size:1.7rem;margin-bottom:.5rem}
+p+p{margin-top:1rem}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ocre);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:0;background:#fff;color:#000;padding:.5rem 1rem;z-index:20}
+.skip:focus{left:0}
+.wrap{max-width:68rem;margin:0 auto;padding:0 clamp(1rem,5vw,2rem)}
+.bloco{padding:clamp(3rem,8vw,5.5rem) 0}
+
+.topo{position:sticky;top:0;z-index:10;background:var(--terra);color:var(--pedra);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.25rem 1.5rem;padding:.7rem clamp(1rem,5vw,3rem)}
+.marca{font-family:var(--serif);font-size:1.15rem;text-decoration:none}
+.topo nav{display:flex;flex-wrap:wrap;gap:.25rem 1.25rem;font-size:.95rem}
+.topo nav a{text-decoration:none;opacity:.85}
+.topo nav a:hover{opacity:1;text-decoration:underline}
+
+.btn{display:inline-block;padding:.75rem 1.4rem;border-radius:.25rem;background:var(--tijolo);color:#fff;text-decoration:none;font-weight:600;border:1px solid var(--tijolo)}
+.btn:hover{background:#8a3b20}
+.btn.sec{background:transparent;color:inherit;border-color:currentColor}
+.btn.sec:hover{background:rgba(255,255,255,.1)}
+
+.hero{background:var(--terra);color:var(--pedra)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:2rem 3rem;align-items:center}
+.hero h1{font-size:clamp(2.5rem,6.5vw,4.6rem);margin-bottom:1rem}
+.hero .sub{font-size:1.25rem;color:var(--ocre);margin-bottom:1rem}
+.hero .acoes{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+.hero figure{text-align:center}
+.hero svg{width:100%;max-width:21rem;height:auto}
+.hero figcaption{font-size:.85rem;color:#cdbfa8;margin-top:.5rem}
+
+.intro{max-width:44rem;font-size:1.15rem}
+.fatos{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:1.5rem 2rem;border-top:2px solid var(--tijolo);padding-top:1.5rem;margin:2.5rem 0}
+.fatos dt{font-family:var(--serif);font-size:2.2rem;color:var(--tijolo);line-height:1.1}
+.fatos dd{margin-top:.35rem}
+.linha{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(10.5rem,1fr));gap:1.25rem}
+.linha li{border-left:2px solid var(--ocre);padding-left:.9rem}
+.linha strong{display:block;font:1.5rem var(--serif);color:var(--tijolo)}
+.nota{color:var(--suave);margin-top:1.5rem;max-width:44rem}
+
+.pacotes{background:#e9dfcc}
+.escolha{display:grid;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr));gap:.75rem;margin:1.5rem 0 2.5rem}
+.opcao{display:block;background:var(--terra);color:var(--pedra);padding:1rem 1.1rem;text-decoration:none;border-radius:.25rem;border-bottom:4px solid var(--ocre)}
+.opcao:hover{background:var(--tijolo)}
+.opcao strong{display:block;font:1.3rem var(--serif)}
+.opcao span{font-size:.9rem;opacity:.85}
+.pacote{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.7fr);gap:1.5rem 3rem;padding:2.5rem 0 2.5rem 1.25rem;border-top:1px solid #bfae92;border-left:5px solid transparent}
+.pacote:target{border-left-color:var(--tijolo);background:rgba(255,255,255,.35)}
+.pacote .lead{color:var(--suave)}
+.vr{display:inline-block;margin-top:1rem;font-size:.9rem;border:1px solid var(--mata);color:var(--mata2);padding:.15rem .75rem;border-radius:2rem;text-decoration:none}
+.pacote h4{font-size:1.2rem;margin:1.5rem 0 .5rem;color:var(--tijolo)}
+.pacote h4:first-child{margin-top:0}
+.lista{padding-left:1.2rem}
+.lista li+li{margin-top:.35rem}
+.dias{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:.75rem;margin-top:.75rem}
+.dia{background:var(--mata);color:var(--pedra);padding:1rem;border-radius:.25rem}
+.dia h5{font:600 1.05rem var(--sans);margin-bottom:.4rem}
+.dia ul{padding-left:1.1rem;font-size:.95rem}
+.voltar{display:inline-block;margin-top:1.5rem;font-size:.9rem;color:var(--suave)}
+
+.como{background:var(--mata);color:var(--pedra)}
+.como h2{margin-bottom:.5rem}
+.atividades{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.5rem 2.5rem;margin-top:2rem}
+.atividades dt{font:600 1.15rem var(--sans);border-top:2px solid var(--ocre);padding-top:.75rem}
+.atividades dd{margin-top:.35rem;opacity:.92}
+.impacto{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1rem;margin-top:3rem}
+.impacto div{background:var(--mata2);padding:1.25rem;border-radius:.25rem}
+.impacto h3{font-size:1.3rem}
+.impacto ul{padding-left:1.1rem;margin-top:.5rem}
+
+.breve{background:var(--terra);color:var(--pedra)}
+.selo{display:inline-block;background:var(--ocre);color:var(--terra);font-weight:700;padding:.2rem .8rem;border-radius:2rem;margin-bottom:1rem}
+.breve .intro{color:#e6dccb}
+.fases{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:1rem;margin-top:2.5rem}
+.fases li{background:var(--terra2);padding:1.25rem;border-radius:.25rem;border-top:4px solid #6a5748}
+.fases li.alvo{border-top-color:var(--ocre)}
+.fases h3{font-size:1.35rem;color:var(--ocre)}
+
+footer{background:#1f140e;color:#cdbfa8;font-size:.9rem;padding:2rem 0}
+
+@media (max-width:760px){
+  .hero-grid,.pacote{grid-template-columns:1fr}
+  .hero figure{order:-1}
+  .hero svg{max-width:13rem}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#conteudo">Ir para o conteúdo</a>
+
+<header class="topo">
+  <a class="marca" href="#inicio">Expedição Príncipe da Beira</a>
+  <nav aria-label="Seções da página">
+    <a href="#forte">O forte</a>
+    <a href="#pacotes">Pacotes</a>
+    <a href="#como-funciona">Como funciona</a>
+    <a href="#em-breve">Em breve</a>
+  </nav>
+</header>
+
+<main id="conteudo">
+
+<section class="hero bloco" id="inicio">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Expedição Príncipe da Beira</h1>
+      <p class="sub">Turismo, história e renda para Costa Marques (RO)</p>
+      <p>Um projeto de empreendedorismo para levar mais visitantes ao maior forte português fora da Europa, com experiências completas, renda local e recursos para preservar as ruínas.</p>
+      <div class="acoes">
+        <a class="btn" href="#pacotes">Ver os pacotes</a>
+        <a class="btn sec" href="#forte">Conhecer o forte</a>
+      </div>
+    </div>
+    <figure>
+      <svg viewBox="0 0 300 300" role="img" aria-label="Desenho esquemático da planta do forte: um quadrado com um baluarte em cada canto">
+        <g fill="#3b2a21" stroke="#dba26b" stroke-width="3" stroke-linejoin="round">
+          <polygon points="80,125 30,30 125,80"/>
+          <polygon points="220,125 270,30 175,80"/>
+          <polygon points="80,175 30,270 125,220"/>
+          <polygon points="220,175 270,270 175,220"/>
+          <rect x="80" y="80" width="140" height="140"/>
+        </g>
+        <rect x="108" y="108" width="84" height="84" fill="none" stroke="#dba26b" stroke-width="1.5" stroke-dasharray="5 5"/>
+        <circle cx="150" cy="150" r="4" fill="#dba26b"/>
+      </svg>
+      <figcaption>Desenho esquemático, sem escala: planta quadrangular com quatro baluartes.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="bloco" id="forte">
+  <div class="wrap">
+    <h2>Um patrimônio enorme, ainda pouco explorado</h2>
+    <p class="intro">O Forte Príncipe da Beira foi construído entre 1776 e 1783, à margem direita do rio Guaporé, em Costa Marques (RO), perto da fronteira com a Bolívia. Foi erguido para defender a fronteira da Coroa Portuguesa e é a maior edificação militar portuguesa fora da Europa.</p>
+
+    <dl class="fatos">
+      <div><dt>~500</dt><dd>visitantes por mês, segundo o MPF: há muito espaço para crescer</dd></div>
+      <div><dt>713 + 26 km</dt><dd>de Porto Velho a Costa Marques, mais cerca de 26 km de estrada de terra até o forte</dd></div>
+      <div><dt>18,8 mil</dt><dd>habitantes em Costa Marques, em 2020</dd></div>
+    </dl>
+
+    <h3>A história do forte</h3>
+    <ol class="linha" style="margin-top:1rem">
+      <li><strong>1776</strong>Começa a construção, concluída em 1783.</li>
+      <li><strong>1889</strong>Com a Proclamação da República, o forte é desativado.</li>
+      <li><strong>1914</strong>A expedição de Rondon o encontra abandonado e coberto de vegetação.</li>
+      <li><strong>2008</strong>O Iphan inicia as pesquisas arqueológicas no local.</li>
+      <li><strong>Hoje</strong>Patrimônio tombado pelo Iphan, com cerca de 500 visitantes por mês.</li>
+    </ol>
+    <p class="nota">O interior das ruínas está deteriorado: o turismo pode ajudar a financiar a preservação. Lideranças locais também já pediram o asfaltamento da estrada de terra entre a cidade e o forte.</p>
+  </div>
+</section>
+
+<section class="pacotes bloco" id="pacotes">
+  <div class="wrap">
+    <h2>Quatro pacotes para públicos diferentes</h2>
+    <p class="intro">A proposta é viver a história do forte em uma experiência completa, com transporte, guia e conforto. Escolha um pacote para ver os detalhes.</p>
+
+    <nav class="escolha" aria-label="Pacotes">
+      <a class="opcao" href="#dia"><strong>Expedição Dia</strong><span>Visita guiada em um dia</span></a>
+      <a class="opcao" href="#completa"><strong>Expedição Completa</strong><span>2 a 3 dias na região</span></a>
+      <a class="opcao" href="#noturna"><strong>Expedição Noturna</strong><span>Pôr do sol, teatro e estrelas</span></a>
+      <a class="opcao" href="#escolar"><strong>Expedição Escolar</strong><span>Visita pedagógica para grupos</span></a>
+    </nav>
+
+    <article class="pacote" id="dia">
+      <div>
+        <h3>Expedição Dia</h3>
+        <p class="lead">Para quem quer conhecer o forte sem pernoitar.</p>
+        <a class="vr" href="#em-breve">Sala de VR: opcional, com valor extra</a>
+      </div>
+      <div>
+        <h4>O que inclui</h4>
+        <ul class="lista">
+          <li>Transfer de ida e volta</li>
+          <li>Visita guiada com realidade aumentada (QR codes nas ruínas mostram como era cada espaço em 1776)</li>
+          <li>Lanche típico</li>
+        </ul>
+        <a class="voltar" href="#pacotes">Voltar aos pacotes</a>
+      </div>
+    </article>
+
+    <article class="pacote" id="completa">
+      <div>
+        <h3>Expedição Completa</h3>
+        <p class="lead">A experiência inteira, de 2 a 3 dias, com uma noite no forte.</p>
+        <a class="vr" href="#em-breve">Sala de VR: incluída</a>
+      </div>
+      <div>
+        <h4>O que inclui</h4>
+        <ul class="lista">
+          <li>Hospedagem em pousada parceira</li>
+          <li>Passeio de barco pelo Guaporé</li>
+          <li>Vivência com a comunidade quilombola</li>
+          <li>Passaporte Guaporé</li>
+          <li>Uma noite no forte, com teatro</li>
+        </ul>
+        <h4>Exemplo de roteiro</h4>
+        <div class="dias">
+          <div class="dia"><h5>Dia 1</h5><ul><li>Viagem até Costa Marques</li><li>Check-in na pousada</li><li>Jantar típico e entrega do passaporte</li></ul></div>
+          <div class="dia"><h5>Dia 2</h5><ul><li>Manhã: visita ao forte com realidade aumentada</li><li>Almoço com a comunidade quilombola</li><li>Noite no Forte, com teatro</li></ul></div>
+          <div class="dia"><h5>Dia 3</h5><ul><li>Passeio de barco pelo Guaporé</li><li>Carimbos finais e brinde do passaporte</li><li>Souvenirs e retorno</li></ul></div>
+        </div>
+        <p class="nota" style="margin-top:.75rem">Roteiro ilustrativo: a ordem pode mudar conforme o rio, o clima e as saídas programadas.</p>
+        <a class="voltar" href="#pacotes">Voltar aos pacotes</a>
+      </div>
+    </article>
+
+    <article class="pacote" id="noturna">
+      <div>
+        <h3>Expedição Noturna</h3>
+        <p class="lead">O espetáculo Noite no Forte, também vendido separadamente.</p>
+        <a class="vr" href="#em-breve">Sala de VR: incluída</a>
+      </div>
+      <div>
+        <h4>Programação da noite</h4>
+        <ul class="lista">
+          <li>Pôr do sol nas ruínas</li>
+          <li>Teatro com jovens e artistas da região</li>
+          <li>Histórias e lendas do lugar</li>
+          <li>Observação de estrelas</li>
+        </ul>
+        <h4>Eventos</h4>
+        <ul class="lista">
+          <li>Edições periódicas, com vagas limitadas</li>
+          <li>Edição especial no Festival de Praia de Costa Marques</li>
+          <li>Concurso de fotos e vídeos com hashtag oficial</li>
+        </ul>
+        <p class="nota" style="margin-top:1rem">A realização depende da autorização do Iphan e do Exército, com iluminação e palco removíveis para proteger as ruínas.</p>
+        <a class="voltar" href="#pacotes">Voltar aos pacotes</a>
+      </div>
+    </article>
+
+    <article class="pacote" id="escolar">
+      <div>
+        <h3>Expedição Escolar</h3>
+        <p class="lead">Para escolas e universidades de Rondônia.</p>
+        <a class="vr" href="#em-breve">Sala de VR: a definir</a>
+      </div>
+      <div>
+        <h4>O que inclui</h4>
+        <ul class="lista">
+          <li>Visita pedagógica ao forte, com guia</li>
+          <li>Material didático</li>
+          <li>Preço especial para grupos</li>
+        </ul>
+        <p class="nota" style="margin-top:1rem">É o pacote indicado para começar: o projeto prevê iniciar com grupos fechados e escolas.</p>
+        <a class="voltar" href="#pacotes">Voltar aos pacotes</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="como bloco" id="como-funciona">
+  <div class="wrap">
+    <h2>Como funciona</h2>
+    <p class="intro">A Expedição vende uma experiência, não só uma visita. Estas atividades se combinam em todos os pacotes.</p>
+
+    <dl class="atividades">
+      <div><dt>Realidade aumentada</dt><dd>QR codes espalhados pelas ruínas mostram, no celular, como era cada espaço do forte em 1776.</dd></div>
+      <div><dt>Passaporte Guaporé</dt><dd>O visitante junta carimbos no forte, na comunidade, no rio e na praia e ganha um brinde no fim.</dd></div>
+      <div><dt>Comunidade quilombola</dt><dd>Guias locais, culinária e artesanato, com a renda ficando na região.</dd></div>
+      <div><dt>Passeio no rio</dt><dd>Barco pelo Guaporé, com natureza, fauna e pôr do sol.</dd></div>
+    </dl>
+
+    <div class="impacto">
+      <div>
+        <h3>Para onde vai o dinheiro</h3>
+        <ul>
+          <li>Renda para guias, transporte, hospedagem e comunidade</li>
+          <li>Empregos para jovens e artistas da região</li>
+          <li>Parte da receita para conservar o forte</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Quem participa</h3>
+        <ul>
+          <li>Comunidade quilombola: guias, culinária, artesanato e histórias</li>
+          <li>Prefeitura de Costa Marques: apoio e divulgação</li>
+          <li>Iphan e Exército: autorizações e proteção do patrimônio</li>
+          <li>Pousadas, restaurantes e barqueiros: hospedagem, alimentação e transporte</li>
+          <li>Sebrae e universidades: capacitação e pesquisa histórica</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="breve bloco" id="em-breve">
+  <div class="wrap">
+    <span class="selo">Em breve</span>
+    <h2>Sala de Realidade Virtual</h2>
+    <p class="intro">Uma sala em Costa Marques vai mostrar o forte como era quando estava ativo, com base histórica. Ela é um investimento futuro: só será criada se a primeira fase der certo.</p>
+    <p class="intro">Quando existir, a sala entra nos pacotes Completa e Noturna, e pode ser incluída no pacote Dia por um valor extra.</p>
+
+    <ol class="fases">
+      <li class="alvo"><h3>Fase 1: começo</h3>Pacotes, eventos e realidade aumentada por QR code.</li>
+      <li class="alvo"><h3>Fase 2: sala de VR</h3>Sala em Costa Marques, financiada com a receita da fase 1, patrocínio e editais de cultura e turismo.</li>
+      <li><h3>Fase 3: expansão</h3>Passeio virtual online para escolas e público de outras regiões.</li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Expedição Príncipe da Beira: projeto de empreendedorismo. Turismo, história e renda para Costa Marques (RO).</p>
+    <p>Os valores serão levantados com orçamentos reais antes de fechar os preços.</p>
+  </div>
+</footer>
+</body>
+</html>
